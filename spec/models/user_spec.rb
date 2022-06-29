@@ -17,6 +17,6 @@ RSpec.describe User, type: :model do
     it 'requires email' do
       expect(user.valid?).to eq(false)
       expect(user.errors[:email]).to include("can't be blank")
-    end
+    end 
   end
 end

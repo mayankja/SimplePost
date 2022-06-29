@@ -24,16 +24,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_121500) do
     t.index ["user_id"], name: "index_comemnts_on_user_id"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text "body"
-    t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.integer "author_id"
@@ -52,6 +42,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_121500) do
 
   add_foreign_key "comemnts", "posts"
   add_foreign_key "comemnts", "users"
-  add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "users"
 end
