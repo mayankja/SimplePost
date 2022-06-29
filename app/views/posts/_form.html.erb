@@ -20,7 +20,7 @@
     <%= form.label :body, style: "display: block" %>
     <%= form.text_area :body %>
   </div>
-
+  <%= form.hidden_field :author_id, value: User.first.id %>
   <div>
     <%= form.submit %>
   </div>

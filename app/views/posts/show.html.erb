@@ -8,3 +8,28 @@
 
   <%= button_to "Destroy this post", @post, method: :delete %>
 </div>
+
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.user.email %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_with model: [ @post, @post.comments.build ] do |form| %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <%= form.hidden_field :user_id, value: User.first.id %>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
